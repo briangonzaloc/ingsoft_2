@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2016 a las 22:24:12
+-- Tiempo de generación: 19-05-2016 a las 02:47:54
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.6.11
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `calificacion` (
   `id_calificacion` int(11) NOT NULL,
   `descripcion` longtext NOT NULL,
-  `id_usuario` int(11) NOT NULL,
   `id_couch` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `id_reserva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS `usuario_solicita_couch.` (
 --
 ALTER TABLE `calificacion`
   ADD PRIMARY KEY (`id_calificacion`),
-  ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_couch` (`id_couch`),
+  ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_reserva` (`id_reserva`);
 
 --
@@ -365,8 +365,8 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `calificacion_ibfk_2` FOREIGN KEY (`id_couch`) REFERENCES `couch` (`id_couch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`id_couch`) REFERENCES `couch` (`id_couch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `calificacion_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `calificacion_ibfk_3` FOREIGN KEY (`id_reserva`) REFERENCES `reserva` (`id_reserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
